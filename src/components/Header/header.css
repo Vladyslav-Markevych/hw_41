@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+  border-bottom: 1px solid;
+  box-shadow: 2px 2px 3px 1px rgba(65, 64, 64, 0.373);
+  position: relative;
+  z-index: 1;
+}
+
+.button-header {
+  display: flex;
+  gap: 10px;
+}

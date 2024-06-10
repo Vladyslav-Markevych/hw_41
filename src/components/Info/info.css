@@ -1,0 +1,35 @@
+.info-block {
+  background-color: rgba(213, 226, 34, 0.756);
+  padding: 20px;
+}
+
+.infoText {
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}
+.info-desc {
+  font-weight: normal;
+}
+
+.info-date {
+  color: green;
+}
+
+.hide {
+  display: none;
+}
+
+.closeButton {
+  background-color: transparent;
+  border: 1px;
+
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.closeButton:hover {
+  border: 1px solid;
+  cursor: pointer;
+}
