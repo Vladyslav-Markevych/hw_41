@@ -1,7 +1,9 @@
-import './link.css'
+import "./link.css";
 
-export function Link({children}) {
-    return (
-        <a className="link-text" href="./">{children}</a>
-    )
+export function Link({ children }) {
+  return (
+    <a className='link-text' href='./'>
+      {children}
+    </a>
+  );
 }
