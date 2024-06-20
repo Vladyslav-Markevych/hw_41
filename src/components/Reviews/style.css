@@ -1,0 +1,77 @@
+.listItem {
+  padding: 20px;
+  border: 1px solid rgba(128, 128, 128, 0.251);
+  height: 300px;
+}
+
+.quote {
+  width: 17px;
+  height: 16px;
+}
+
+.bold-span {
+  font-weight: bold;
+}
+
+.initial {
+  background-color: rgb(51, 47, 47);
+  color: white;
+  margin-right: 10px;
+  width: 35px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+}
+
+.descriptionText {
+  height: 90px;
+}
+
+.jobItem {
+  margin-top: 50px;
+  color: blue;
+  font-size: 14px;
+  font-weight: bold;
+  border-top: 1px solid rgba(128, 128, 128, 0.251);
+  padding-top: 10px;
+}
+
+.jobItem::before {
+  content: url("./play.png");
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+}
+
+.swiper-button-prev {
+  left: 10px;
+}
+
+.swiper-button-next {
+  right: 10px;
+}
+
+.swipe-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 40px;
+  margin-top: 50px;
+}

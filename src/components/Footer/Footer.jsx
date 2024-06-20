@@ -1,4 +1,6 @@
 import "./footer.css";
+import { Company } from "../Company";
+import { Reviews } from "../Reviews";
 
 export function Footer() {
   return (
@@ -7,6 +9,8 @@ export function Footer() {
         Trusted by over 16,000 companies and millions of earners around the
         world
       </p>
+      <Company />
+      <Reviews />
     </footer>
   );
 }
