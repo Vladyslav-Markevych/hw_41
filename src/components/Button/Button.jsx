@@ -1,5 +1,9 @@
 import "./button.css";
 
-export function Button({ children, forCss }) {
-  return <button className={forCss}>{children}</button>;
+export function Button({ onClick, children, forCss }) {
+  return (
+    <button onClick={onClick} className={forCss}>
+      {children}
+    </button>
+  );
 }
