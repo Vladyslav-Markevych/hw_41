@@ -1,5 +1,5 @@
-import descArray from "../description/description.js";
 import quote from "./quote.svg";
+import { useState, useEffect } from "react";
 
 // Import Swiper React components
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
@@ -11,6 +11,14 @@ import "swiper/css/navigation";
 import "./style.css";
 
 export function Reviews() {
+  const [descArray, setDescArray] = useState([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/comments")
+      .then((data) => data.json())
+      .then((response) => setDescArray(response.slice(0, 10)))
+      .catch(setDescArray([]));
+  }, []);
   return (
     <>
       <p className='swipe-title'>
@@ -25,30 +33,29 @@ export function Reviews() {
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
         >
-          {descArray.map(({ text, id, name, job }) => {
-            return (
-              <SwiperSlide key={id}>
-                <li className='listItem'>
-                  <img className='quote' src={quote} alt='quotes' />
-                  {/* Нагуглил, пишут, что так не совсем правильно */}
-                  <p
-                    className='descriptionText'
-                    dangerouslySetInnerHTML={{ __html: text }}
-                  ></p>
-                  <span className='initial'>
-                    {name
-                      .split(" ")
-                      .map((word) => word[0])
-                      .join("")}
-                  </span>
-                  <span className='nameItem'>{name}</span>
-                  <p className='jobItem'>{job}</p>
-                </li>
-              </SwiperSlide>
-            );
-          })}
+          {descArray.length ? (
+            descArray.map(({ body, id, name, email }) => {
+              return (
+                <SwiperSlide key={id}>
+                  <li className='listItem'>
+                    <img className='quote' src={quote} alt='quotes' />
+                    <p className='descriptionText'> {body}</p>
+                    <span className='initial'>{name}</span>
+                    <span className='nameItem'>{name}</span>
+                    <p className='jobItem'>{email}</p>
+                  </li>
+                </SwiperSlide>
+              );
+            })
+          ) : (
+            <div>
+              <p>Comments not found</p>
+            </div>
+          )}
         </Swiper>
       </ul>
     </>
   );
 }
+
+//
