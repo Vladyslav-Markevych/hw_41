@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import "./style.css";
 
-export function SignUpModal({ isSignUpModal, closeModal }) {
+export function SignUpModal() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -17,8 +17,6 @@ export function SignUpModal({ isSignUpModal, closeModal }) {
       setIsCorrect(false);
     }
   }, [isOkFullName, isOkPassword, isOkEmail]);
-
-  if (!isSignUpModal) return null;
 
   function onSubmit(event) {
     event.preventDefault();
@@ -73,9 +71,6 @@ export function SignUpModal({ isSignUpModal, closeModal }) {
   return (
     <div className='signUpModal'>
       <div className='SignUpModalWrapper'>
-        <button onClick={closeModal} className='closeSignUp'>
-          x
-        </button>
         <p className='SignUp-title'>Sign up and start learning</p>
         <form className='SignUp-wrapper' onSubmit={onSubmit}>
           <input
