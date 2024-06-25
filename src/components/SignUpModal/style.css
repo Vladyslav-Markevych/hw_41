@@ -1,8 +1,8 @@
 .SignUpModalWrapper {
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   width: 350px;
   height: 425px;
   top: 100px;
@@ -11,7 +11,6 @@
   background-color: rgb(255, 255, 255);
   cursor: default;
   padding: 40px 20px;
-  z-index: 2;
 }
 
 .SignUp-title {
