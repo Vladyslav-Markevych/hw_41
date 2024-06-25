@@ -1,18 +1,8 @@
-.signUpModal {
-  background: rgba(0, 0, 0, 0.8);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-}
-
 .SignUpModalWrapper {
   display: flex;
+  margin: 0 auto;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   width: 350px;
   height: 425px;
   top: 100px;
@@ -21,7 +11,6 @@
   background-color: rgb(255, 255, 255);
   cursor: default;
   padding: 40px 20px;
-  z-index: 2;
 }
 
 .SignUp-title {
@@ -56,6 +45,11 @@
   border: 0;
   cursor: not-allowed;
 }
+
+.validOk {
+  width: 50px;
+  height: 50px;
+}
 .active {
   background-color: rgba(133, 22, 237, 0.937);
   cursor: pointer;
@@ -81,4 +75,13 @@
   border: 0;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.popup-error {
+  padding: 0;
+  position: absolute;
+  border: 1px solid;
+  margin-top: -80px;
+  background-color: rgb(214, 181, 141);
+  text-align: center;
 }

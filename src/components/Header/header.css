@@ -14,3 +14,22 @@
   display: flex;
   gap: 10px;
 }
+
+.signup-link {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 14px;
+  padding-top: 10px;
+  border: 1px solid;
+  color: white;
+  background-color: black;
+  min-width: 90px;
+  height: 34px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.signup-link:hover {
+  background-color: white;
+  color: black;
+}

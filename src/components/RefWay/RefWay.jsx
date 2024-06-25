@@ -1,6 +1,6 @@
 import "./link.css";
 
-export function Link({ children }) {
+export function RefWay({ children }) {
   return (
     <a className='link-text' href='./'>
       {children}
