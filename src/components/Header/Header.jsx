@@ -1,5 +1,4 @@
 import "./header.css";
-import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 import logo from "../../logo.svg";
