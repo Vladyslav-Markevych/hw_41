@@ -3,7 +3,6 @@ import "./style.css";
 import { addCourse } from "../../store/slices/courseSlise";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { Course } from "../Course";
 
 function getRandom() {
   return Math.floor(Math.random() * 999999999);
@@ -35,7 +34,7 @@ export function AddCourse() {
     if (name && author && linkVideo && description) {
       dispatch(
         addCourse({
-          // id: randomId,
+          id: randomId,
           name: name,
           author: author,
           linkVideo: linkVideo,
@@ -69,7 +68,9 @@ export function AddCourse() {
           />
         </div>
         <div className='inputForCourse'>
-          <label htmlFor='linkVideo'>Link to video:</label>
+          <label htmlFor='linkVideo'>
+            Link to video(only youtube code 'embed'):
+          </label>
           <input
             className='inputAddCourse'
             type='url'

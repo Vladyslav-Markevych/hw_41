@@ -1,51 +1,84 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { delCourse } from "../../store/slices/courseSlise";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 import "./style.css";
 import { useState } from "react";
+import { addOrDelFavorite } from "../../store/slices/favoriteSlice";
+
 export function Course() {
   const course = useSelector((state) => state.courses);
-  console.log(course);
+  const favorite = useSelector((state) => state.favorite);
   const ifCourseAvaliable = course?.length;
-  const [isSubmitted, serIsSubmitted] = useState(true);
+  const [isSubmitted, serIsSubmitted] = useState(false);
 
   function changeAdminMode() {
     isSubmitted ? serIsSubmitted(false) : serIsSubmitted(true);
   }
+
+  const handleFavorite = (items) => {
+    dispatch(addOrDelFavorite(items));
+  };
+
+  const dispatch = useDispatch();
+
+  const delButton = (id) => {
+    dispatch(delCourse(id));
+  };
 
   return (
     <>
       <div className='admin-mode'>
         {isSubmitted && (
           <Link to='addcourse'>
-            <button>Add Course</button>
+            <button className='admButtons'>Add Course</button>
           </Link>
         )}
-        <button onClick={changeAdminMode}>
+        <button className='admButtons' onClick={changeAdminMode}>
           Admin Mode {isSubmitted ? "On" : "Off"}
-        </button>{" "}
+        </button>
       </div>
       <div className='course-block'>
         {ifCourseAvaliable ? (
           course.map((items) => {
-            return (
-              <>
-                <div
-                  className={
-                    isSubmitted ? "EachCourseAdmin EachCourse " : "EachCourse"
-                  }
-                >
-                  {isSubmitted && (
-                    <div className='editbuttons'>
-                      <button>edit</button> <button>x</button>
-                    </div>
-                  )}
+            const isfavorite = favorite.find((fav) => fav.id === items.id);
 
-                  <p> {items.name}</p>
-                  <p> {items.author}</p>
-                  <p> {items.linkVideo}</p>
-                  <p> {items.description}</p>
+            return (
+              <div
+                key={items.id}
+                className={
+                  isSubmitted ? "EachCourseAdmin EachCourse " : "EachCourse"
+                }
+              >
+                {" "}
+                <div>
+                  <FavoriteIcon
+                    className='iconFavorite'
+                    onClick={() => handleFavorite(items)}
+                    color={isfavorite ? "success" : "disabled"}
+                  />
                 </div>
-              </>
+                {isSubmitted && (
+                  <div className='editbuttons'>
+                    <Link to={`/course/editcourse/${items.id}`}>
+                      <button className='admButtons'>edit</button>
+                    </Link>
+                    <button
+                      className='delButton admButtons'
+                      onClick={() => delButton(items)}
+                    >
+                      x
+                    </button>
+                  </div>
+                )}
+                <p className='titleCourseName'> {items.name}</p>
+                <p>Author: {items.author}</p>
+                <p className='desc-text'> {items.description}</p>
+                <Link className='linkToChoosen' to={`/course/${items.id}`}>
+                  <button className='linkToChoosenButton'> Open Course</button>{" "}
+                </Link>
+              </div>
             );
           })
         ) : (

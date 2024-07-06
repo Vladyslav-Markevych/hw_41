@@ -1,0 +1,24 @@
+.ButtonEditBlock {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.editButtonCourse {
+  background-color: white;
+  color: black;
+  border: 2px solid #04aa6d;
+  padding: 12px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  transition-duration: 0.3s;
+  cursor: pointer;
+}
+
+.editButtonCourse:hover {
+  background-color: #04aa6d; /* Green */
+  color: white;
+  border: none;
+}

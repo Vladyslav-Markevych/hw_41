@@ -1,5 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import courseSlise from "./slices/courseSlise";
+import favoriteSlice from "./slices/favoriteSlice";
+
 import {
   persistStore,
   persistReducer,
@@ -17,7 +19,10 @@ const persistConfig = {
   key: "root",
   storage,
 };
-const rootReducer = combineReducers({ courses: courseSlise });
+const rootReducer = combineReducers({
+  courses: courseSlise,
+  favorite: favoriteSlice,
+});
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
