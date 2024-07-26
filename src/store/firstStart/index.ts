@@ -1,4 +1,14 @@
-export const initialState = [
+type initialStateProps = objProps[]
+interface objProps {
+  id: number,
+  name: string
+  author: string
+  linkVideo: string
+  description: string
+}
+
+
+export const initialState:initialStateProps = [
   {
     id: 123123124,
     name: "First Course",

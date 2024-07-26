@@ -4,19 +4,20 @@ import "./style.css";
 import "../Course/style.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { addOrDelFavorite } from "../../store/slices/favoriteSlice";
+import { Favorite, RootState } from "../Course/Course";
 
 export function Profile() {
-  const fav = useSelector((state) => state.favorite);
+  const fav = useSelector((state: RootState) => state.favorite);
 
   const dispatch = useDispatch();
-  const handleFavorite = (item) => {
+  const handleFavorite = (item: Favorite) => {
     dispatch(addOrDelFavorite(item));
   };
 
   return (
     <div className='block-profile'>
       {fav.length > 0 ? (
-        fav.map((item) => {
+        fav.map((item: Favorite) => {
           const isfavorite = fav.find((fav) => fav.id === item.id);
 
           return (

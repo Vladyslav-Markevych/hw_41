@@ -10,14 +10,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "./style.css";
 
+
+interface Comment {
+  body: string;
+  id: number;
+  name: string;
+  email: string;
+}
+
+
 export function Reviews() {
-  const [descArray, setDescArray] = useState([]);
+  const [descArray, setDescArray] = useState<Comment[]>([]);
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/comments")
       .then((data) => data.json())
       .then((response) => setDescArray(response.slice(0, 10)))
-      .catch(setDescArray([]));
+      .catch(() => setDescArray([]));
   }, []);
   return (
     <>

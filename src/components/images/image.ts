@@ -1,4 +1,4 @@
-const listImage = [
+const listImage: string[] = [
   "https://s.udemycdn.com/partner-logos/ou-v1/volkswagen.svg",
   "https://s.udemycdn.com/partner-logos/ou-v1/samsung.svg",
   "https://s.udemycdn.com/partner-logos/ou-v1/cisco.svg",

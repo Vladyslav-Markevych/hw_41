@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
+import { FormEvent, ChangeEvent } from "react";
 import "./style.css";
+
+interface ErrorInput {
+  fullNameError: string;
+  emailError: string;
+  passwordError: string;
+}
 
 export function SignUpModal() {
   const [isCorrect, setIsCorrect] = useState(false);
@@ -10,7 +17,7 @@ export function SignUpModal() {
   const [isOkFullName, setIsOkFullName] = useState(false);
   const [isOkPassword, setIsOkPassword] = useState(false);
   const [isOkEmail, setIsOkEmail] = useState(false);
-  const [errorInput, setErrorInput] = useState({
+  const [errorInput, setErrorInput] = useState<ErrorInput>({
     fullNameError: "",
     emailError: "",
     passwordError: "",
@@ -24,16 +31,20 @@ export function SignUpModal() {
     }
   }, [isOkFullName, isOkPassword, isOkEmail]);
 
-  function onSubmit(event) {
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(event.target.elements);
-    const { fullName, email, password } = event.target.elements;
+    // console.log('NewError', event.target.elements)
+    // const { fullName, email, password } = event.target.elements
+    const form = event.currentTarget;
+    const fullName = form.elements.namedItem("fullName") as HTMLInputElement;
+    const email = form.elements.namedItem("email") as HTMLInputElement;
+    const password = form.elements.namedItem("password") as HTMLInputElement;
     console.log(fullName.value);
     console.log(email.value);
     console.log(password.value);
   }
 
-  function onChangeFullName(event) {
+  function onChangeFullName(event: ChangeEvent<HTMLInputElement>) {
     let checkName = event.target.value.split(" ");
     if (
       checkName.length >= 2 &&
@@ -41,19 +52,21 @@ export function SignUpModal() {
       checkName[1].length > 2
     ) {
       setIsOkFullName(true);
-      setErrorInput({
+      setErrorInput((prev) => ({
+        ...prev,
         fullNameError: "",
-      });
+      }));
     } else {
       setIsOkFullName(false);
-      setErrorInput({
+      setErrorInput((prev) => ({
+        ...prev,
         fullNameError:
           "Full name should have at least two words and each word should has at least two letters",
-      });
+      }));
     }
     setFullName(event.target.value);
   }
-  function onChangePassword(event) {
+  function onChangePassword(event: ChangeEvent<HTMLInputElement>) {
     const hasLetter = /[a-zA-Z]/.test(event.target.value);
     const hasDigit = /\d/.test(event.target.value);
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(event.target.value);
@@ -66,30 +79,28 @@ export function SignUpModal() {
       countLetter < 15
     ) {
       setIsOkPassword(true);
-      setErrorInput({
-        passwordError: "",
-      });
+      setErrorInput((prev) => ({ ...prev, passwordError: "" }));
     } else {
       setIsOkPassword(false);
-      setErrorInput({
+      setErrorInput((prev) => ({
+        ...prev,
         passwordError:
           "password should contain not less than 8 symbols and not more than 15. password should contain at least one number, at least one letter and at least one special symbol",
-      });
+      }));
     }
     setPassword(event.target.value);
   }
-  function onChangeEmail(event) {
+  function onChangeEmail(event: ChangeEvent<HTMLInputElement>) {
     const hasChar = /@/.test(event.target.value);
     if (hasChar) {
       setIsOkEmail(true);
-      setErrorInput({
-        emailError: "",
-      });
+      setErrorInput((prev) => ({ ...prev, emailError: "" }));
     } else {
       setIsOkEmail(false);
-      setErrorInput({
+      setErrorInput((prev) => ({
+        ...prev,
         emailError: "email should containt at least symbol @",
-      });
+      }));
     }
     setEmail(event.target.value);
   }

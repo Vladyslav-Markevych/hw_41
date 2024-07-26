@@ -8,10 +8,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SignUpModal } from "./components/SignUpModal";
 import { AddCourse } from "./components/AddCourse/AddCourse";
 import { ChoosenCourse } from "./components/ChoosenCourse";
-import { Profile } from "./components/Profile/";
+import { Profile } from "./components/Profile";
 import { EditCourse } from "./components/EditCourse/EditCourse";
+import { FC } from "react";
 
-export function App() {
+export const App:FC = () => {
   return (
     <Router>
       <Routes>

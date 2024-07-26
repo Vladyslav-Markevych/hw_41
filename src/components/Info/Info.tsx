@@ -2,12 +2,12 @@ import "./info.css";
 import React, { useState } from "react";
 
 export function Info() {
-  const savedStorage = localStorage.getItem("isClosed") === "true";
-  const [isClosed, setIsClosed] = useState(savedStorage);
+  const savedStorage:boolean = localStorage.getItem("isClosed") === "true";
+  const [isClosed, setIsClosed] = useState<boolean>(savedStorage);
 
   const toClose = () => {
     setIsClosed(true);
-    localStorage.setItem("isClosed", true);
+    localStorage.setItem("isClosed", 'true');
   };
 
   return (
