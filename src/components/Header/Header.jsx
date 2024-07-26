@@ -1,5 +1,4 @@
 import "./header.css";
-import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 import logo from "../../logo.svg";
@@ -18,8 +17,8 @@ export function Header() {
         </Link>
         <RefWay>Categories</RefWay>
         <Input />
-        <RefWay>Udemy Business</RefWay>
-        <RefWay>Teach on Udemy</RefWay>
+        <NavLink to='/course'>Course</NavLink>
+        <NavLink to='/profile'>Profile</NavLink>
         <div className='button-header'>
           <Button forCss='uncolor'>
             <img src={cart} alt='cart' />
