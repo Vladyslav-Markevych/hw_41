@@ -6,10 +6,32 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import "./style.css";
 import { useState } from "react";
 import { addOrDelFavorite } from "../../store/slices/favoriteSlice";
+import { stateProps } from "../CourseObj/useCourseObj";
+
+export interface CourseProps {
+  id: number;
+  name: string;
+  author: string;
+  linkVideo: string;
+  description: string;
+}
+
+export interface Favorite {
+  id: number;
+  name: string;
+  author: string;
+  linkVideo: string;
+  description: string;
+}
+
+export interface RootState {
+  courses: CourseProps[];
+  favorite: Favorite[];
+}
 
 export function Course() {
-  const course = useSelector((state) => state.courses);
-  const favorite = useSelector((state) => state.favorite);
+  const course = useSelector((state: RootState) => state.courses);
+  const favorite = useSelector((state: RootState) => state.favorite);
   const ifCourseAvaliable = course?.length;
   const [isSubmitted, serIsSubmitted] = useState(false);
 
@@ -17,13 +39,13 @@ export function Course() {
     isSubmitted ? serIsSubmitted(false) : serIsSubmitted(true);
   }
 
-  const handleFavorite = (items) => {
+  const handleFavorite = (items: CourseProps) => {
     dispatch(addOrDelFavorite(items));
   };
 
   const dispatch = useDispatch();
 
-  const delButton = (id) => {
+  const delButton = (id: CourseProps) => {
     dispatch(delCourse(id));
   };
 
@@ -42,7 +64,9 @@ export function Course() {
       <div className='course-block'>
         {ifCourseAvaliable ? (
           course.map((items) => {
-            const isfavorite = favorite.find((fav) => fav.id === items.id);
+            const isfavorite = favorite.find(
+              (fav) => fav.id.toString() === items.id.toString()
+            );
 
             return (
               <div

@@ -4,20 +4,21 @@ import { useDispatch } from "react-redux";
 import { editCourse } from "../../store/slices/courseSlise";
 import { Link } from "react-router-dom";
 import "./style.css";
+import { FC } from "react";
 
-export function EditCourse() {
+export const EditCourse:FC = () => {
   const course = useCourseObj();
   const dicpatch = useDispatch();
 
   const [info, setInfo] = useState({
-    id: course.id,
-    name: course.name,
-    author: course.author,
-    linkVideo: course.linkVideo,
-    description: course.description,
+    id: course?.id || "",
+    name: course?.name || "",
+    author: course?.author || "",
+    linkVideo: course?.linkVideo || "",
+    description: course?.description || "",
   });
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     event.preventDefault();
     const { name, value } = event.target;
     setInfo((prevInputs) => ({
@@ -91,4 +92,4 @@ export function EditCourse() {
     );
   }
   return <div>Edit Course</div>;
-}
+};

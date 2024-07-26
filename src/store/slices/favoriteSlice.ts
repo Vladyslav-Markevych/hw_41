@@ -1,9 +1,19 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+interface FavoriteCourse {
+  id: number;
+  name: string;
+  author: string;
+  linkVideo: string;
+  description: string;
+}
+const initialState: FavoriteCourse[] = [];
+
 export const favoriteSlice = createSlice({
   name: "favorite",
-  initialState: [],
+  initialState,
   reducers: {
-    addOrDelFavorite: (state, action) => {
+    addOrDelFavorite: (state:FavoriteCourse[], action: PayloadAction<FavoriteCourse>) => {
       const ifCourseExist = state.findIndex(
         (item) => item.name === action.payload.name
       );

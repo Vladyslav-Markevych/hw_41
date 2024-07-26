@@ -1,7 +1,8 @@
-import listImage from "../images/image.js";
+import { FC } from "react";
+import listImage from "../images/image";
 import "./style.css";
 
-export function Company() {
+export const Company:FC = () => {
   return (
     <div className='company'>
       <ul className='list-block'>

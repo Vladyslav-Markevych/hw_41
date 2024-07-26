@@ -7,8 +7,9 @@ import { RefWay } from "../RefWay";
 import { Button } from "../Button";
 import cart from "../Button/cart.svg";
 import browser from "../Button/browser.svg";
+import { FC } from "react";
 
-export function Header() {
+export const  Header:FC = () => {
   return (
     <>
       <header className='header'>

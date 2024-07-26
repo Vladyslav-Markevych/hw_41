@@ -1,23 +1,30 @@
-import { useState } from "react";
+import { FC, useState } from "react";
 import "./style.css";
 import { addCourse } from "../../store/slices/courseSlise";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-function getRandom() {
+function getRandom(): number {
   return Math.floor(Math.random() * 999999999);
 }
 
-export function AddCourse() {
+interface CourseInfo {
+  name: string;
+  author: string;
+  linkVideo: string;
+  description: string;
+}
+
+export const AddCourse:FC = () => {
   const dispatch = useDispatch();
-  const [info, setInfo] = useState({
+  const [info, setInfo] = useState<CourseInfo>({
     name: "",
     author: "",
     linkVideo: "",
     description: "",
   });
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     event.preventDefault();
     const { name, value } = event.target;
     setInfo((prevInputs) => ({
@@ -101,4 +108,4 @@ export function AddCourse() {
       </form>
     </div>
   );
-}
+};
